@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
+#include<stddef.h>
 	//Struct para criar um funcionario
 	typedef struct novoFuncionario{
 		char nome[100];
@@ -15,8 +16,8 @@
 	int main (){
 		setlocale(LC_ALL,"portuguese");
 		int escolha, qtdFuncionario=1;
-		novoFuncionario *funcionarios;
-		//Alocação de memoria dinamica "mallc" para iniciar um array
+		novoFuncionario *funcionarios = NULL;
+		//Alocação de memoria dinamica "malloc" para iniciar um array
 		funcionarios = malloc (qtdFuncionario* sizeof(novoFuncionario));
 		printf("Adicionar Funcionario              [1]\n");
 		printf("Alterar de dados de um funcionario [2]\n");
@@ -46,13 +47,21 @@
 				printf("Escreva o endereço do funcionario: ");
 				fflush(stdin);
 				scanf("%s", &funcionarios[qtdFuncionario - 1].endereco);
+				fflush(stdin);
 				printf("Informe o quanto esse funcionario recebe: ");
 				scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
 				qtdFuncionario++;
 				//Realocação do tamanho do array por meio do "realloc"
 				funcionarios =  realloc  ( funcionarios, qtdFuncionario * sizeof(novoFuncionario));		
 			break;
-			
-				
+			case 2://Alterar dados do funcionario
+				int busca, i;
+				printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
+				scanf("%d",&busca);
+				for(i = 0; i < qtdFuncionario; i++){
+					if(busca == *funcionarios[i].cpf){
+						
+					}
+				}
 		}
 	}
