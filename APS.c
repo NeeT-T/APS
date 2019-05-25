@@ -34,9 +34,9 @@
 		system("cls");
 		switch (escolha){
 			case 1://Adicionar um novo funcionario
-				printf("Digite o nome do funcionario: ");
+				printf("Digite o nome completo do funcionario: ");
 				fflush(stdin);
-				scanf("%s", &funcionarios[(qtdFuncionario-1)].nome);
+				scanf("%s", &funcionarios[qtdFuncionario-1].nome);
 				printf("Insira a idade desse funcionario: ");
 				scanf("%d",&funcionarios[qtdFuncionario - 1].idade);
 				printf("Digite o CPF do funcionario (Tenha certeza de digitalo corretamente porq não poderá muda-lo): ");
@@ -56,7 +56,7 @@
 				qtdFuncionario++;
 				//Realocação do tamanho do array por meio do "realloc"
 				funcionarios = (novoFuncionario*) realloc  ( funcionarios, qtdFuncionario * sizeof(novoFuncionario));		
-			break;
+				break;
 			case 2://Alterar dados do funcionario
 				printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
 				scanf("%d",&escolha);
@@ -79,96 +79,116 @@
 						scanf("%d",&escolha);
 						system("cls");
 						switch (escolha){//Switch para alterar os dados do funcionario
-						case 1://Nome
-							// printf("Nome salvo: %s",funcionarios[i].nome);
-							printf("Nome: ");
-							fflush(stdin);
-							scanf("%s",&funcionarios[i].nome);
-							fflush(stdin);
-							break;
-						case 2://Idade
-							// printf("Idade salva: %d",funcionarios[i].idade);
-							printf("Idade: ");
-							scanf("%d",&funcionarios[i].idade);
-							break;
-						case 3://Cargo
-							// printf("Cargo salvo: %s",funcionarios[i].cargo);
-							printf("Cargo: ");
-							fflush(stdin);
-							scanf("%s",&funcionarios[i].cargo);
-							fflush(stdin);
-							break;
-						case 4://Cidade
-							// printf("Cidade salva: %s",funcionarios[i].cidade);
-							printf("Cidade: ");
-							fflush(stdin);
-							scanf("%s",&funcionarios[i].cidade);
-							fflush(stdin);
-							break;
-						case 5://Endereço
-							// printf("Endereço salvo: %s",funcionarios[i].endereco);
-							printf("Endereço: ");
-							fflush(stdin);
-							scanf("%s",&funcionarios[i].endereco);
-							fflush(stdin);
-							break;
-						case 6://Salario
-							// printf("Salario salvo: %lf",funcionarios[i].salario);
-							printf("Salario: ");
-							scanf("%d",&funcionarios[i].salario);
-							break;
-						case 7://Tudo menos o CPF
-							// printf("Nome salvo: %s",funcionarios[i].nome);
-							// printf("Idade salva: %d",funcionarios[i].idade);
-							// printf("Cargo salvo: %s",funcionarios[i].cargo);
-							// printf("Cidade salva: %s",funcionarios[i].cidade);
-							// printf("Endereço salvo: %s",funcionarios[i].endereco);
-							// printf("Salario salvo: %lf",funcionarios[i].salario);
+							case 1://Nome
+								// printf("Nome salvo: %s",funcionarios[i].nome);
+								printf("Nome completo: ");
+								fflush(stdin);
+								scanf("%s",&funcionarios[i].nome);
+								fflush(stdin);
+								break;
+							case 2://Idade
+								// printf("Idade salva: %d",funcionarios[i].idade);
+								printf("Idade: ");
+								scanf("%d",&funcionarios[i].idade);
+								break;
+							case 3://Cargo
+								// printf("Cargo salvo: %s",funcionarios[i].cargo);
+								printf("Cargo: ");
+								fflush(stdin);
+								scanf("%s",&funcionarios[i].cargo);
+								fflush(stdin);
+								break;
+							case 4://Cidade
+								// printf("Cidade salva: %s",funcionarios[i].cidade);
+								printf("Cidade: ");
+								fflush(stdin);
+								scanf("%s",&funcionarios[i].cidade);
+								fflush(stdin);
+								break;
+							case 5://Endereço
+								// printf("Endereço salvo: %s",funcionarios[i].endereco);
+								printf("Endereço: ");
+								fflush(stdin);
+								scanf("%s",&funcionarios[i].endereco);
+								fflush(stdin);
+								break;
+							case 6://Salario
+								// printf("Salario salvo: %lf",funcionarios[i].salario);
+								printf("Salario: ");
+								scanf("%d",&funcionarios[i].salario);
+								break;
+							case 7://Tudo menos o CPF
+								// printf("Nome salvo: %s",funcionarios[i].nome);
+								// printf("Idade salva: %d",funcionarios[i].idade);
+								// printf("Cargo salvo: %s",funcionarios[i].cargo);
+								// printf("Cidade salva: %s",funcionarios[i].cidade);
+								// printf("Endereço salvo: %s",funcionarios[i].endereco);
+								// printf("Salario salvo: %lf",funcionarios[i].salario);
 
-							printf("Digite o nome do funcionario: ");
-							fflush(stdin);
-							scanf("%s", &funcionarios[i].nome);
-							printf("Insira a idade desse funcionario: ");
-							scanf("%d",&funcionarios[i].idade);
-							// printf("Digite o CPF do funcionario: ");
-							// scanf("%d", &funcionarios[i].cpf);
-							printf("Isira o cargo do funcionario: ");
-							fflush(stdin);
-							scanf("%s",&funcionarios[i].cargo);
-							printf("Informe a cidade do funcionario: ");
-							fflush(stdin);
-							scanf("%s", &funcionarios[i].cidade);
-							printf("Escreva o endereço do funcionario: ");
-							fflush(stdin);
-							scanf("%s", &funcionarios[i].endereco);
-							fflush(stdin);
-							printf("Informe o quanto esse funcionario recebe: ");
-							scanf("%lf", &funcionarios[i].salario);
-							break;
-						default:
-							printf("Escolha invalida.");
-							break;
+								printf("Digite o nome do funcionario: ");
+								fflush(stdin);
+								scanf("%s", &funcionarios[i].nome);
+								printf("Insira a idade desse funcionario: ");
+								scanf("%d",&funcionarios[i].idade);
+								// printf("Digite o CPF do funcionario: ");
+								// scanf("%d", &funcionarios[i].cpf);
+								printf("Isira o cargo do funcionario: ");
+								fflush(stdin);
+								scanf("%s",&funcionarios[i].cargo);
+								printf("Informe a cidade do funcionario: ");
+								fflush(stdin);
+								scanf("%s", &funcionarios[i].cidade);
+								printf("Escreva o endereço do funcionario: ");
+								fflush(stdin);
+								scanf("%s", &funcionarios[i].endereco);
+								fflush(stdin);
+								printf("Informe o quanto esse funcionario recebe: ");
+								scanf("%lf", &funcionarios[i].salario);
+								break;
+							default:
+								printf("Escolha invalida.");
+								break;
 						}
 					}
 				}
 				break;
-			case 3:
+			case 3://Consultar dados de um funcionario
 				printf("[1] Funcionario especifico\n");
 				printf("[2] Todos os funcionario\n");
 				printf("-----------------------------------------\n");
 				printf("Escolha: ");
 				scanf("%d",&escolha);
 				switch (escolha){
-				case 1:
-					printf("Insira o CPF do funcionario.");
-					scanf("%d",&escolha);
-					for ( i = 0; i < qtdFuncionario; i++)
-					{
-						if(escolha == *funcionarios[i].cpf);
-						
-					}
-					break;
+					case 1://Funcionario especifico
+						printf("Insira o primeiro nome do funcionario.");
+						fflush(stdin);
+						scanf("%d",&escolha);
+						for ( i = 0; i < qtdFuncionario; i++){
+							if(escolha == *funcionarios[i].cpf){
+								printf("---------Funcionario---------\n");
+								printf("Nome: %s\n",funcionarios[i].nome);
+								printf("Idade: %d\n",funcionarios[i].idade);
+								printf("CPF: %d\n",funcionarios[i].cpf);
+								printf("Cargo: %s\n",funcionarios[i].cargo);
+								printf("Cidade: %s\n",funcionarios[i].cidade);
+								printf("Endereço: %s\n",funcionarios[i].endereco);
+								printf("Salario: %s\n",funcionarios[i].salario);
+							}
+						}
+					case 2:
+						for(i = 0; i < qtdFuncionario; i++){
+							printf("---------Funcionario---------\n");
+							printf("Nome: %s\n",funcionarios[i].nome);
+							printf("Idade: %d\n",funcionarios[i].idade);
+							printf("CPF: %d\n",funcionarios[i].cpf);
+							printf("Cargo: %s\n",funcionarios[i].cargo);
+							printf("Cidade: %s\n",funcionarios[i].cidade);
+							printf("Endereço: %s\n",funcionarios[i].endereco);
+							printf("Salario: %s\n",funcionarios[i].salario);
+						}
 				}
+
+				break;
 
 		}
 	}
