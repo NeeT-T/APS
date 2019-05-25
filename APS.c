@@ -4,7 +4,6 @@
 #include<stdlib.h>
 #include<locale.h>
 #include<stddef.h>
-#define NULL ((void *)0)
 	//Struct para criar um funcionario
 	typedef struct novoFuncionario{
 		char nome[100];
@@ -22,11 +21,11 @@
 		novoFuncionario *funcionarios = NULL;
 		//Alocação de memoria dinamica "malloc" para iniciar um array
 		funcionarios = (novoFuncionario*)malloc (qtdFuncionario* sizeof(novoFuncionario));
-		printf("[1] Adicionar Funcionario              \n");
-		printf("[2] Alterar dados de um funcionario    \n");
-		printf("[3] Consultar dados de um funcionario  \n");
-		printf("Exclusão[4]\n");
-		printf("Listagem[5]\n");
+		printf("[1] Adicionar Funcionario\n");
+		printf("[2] Alterar dados de um funcionario\n");
+		printf("[3] Consultar dados de um funcionario\n");
+		printf("[4] Excluir dados de um funcionario\n");
+		printf("[5] Listagem\n");
 		printf("-----------------------------------------\n");
 		printf("Escolha: ");
 		scanf("%d", &escolha);
@@ -159,9 +158,11 @@
 				printf("Escolha: ");
 				scanf("%d",&escolha);
 				switch (escolha){
+					//{Deem um jeito nesse Case 1 porq ele tá bugado mesmo não estando igual ele coloca
+					//Um valor aleatorio isso aconteceu nos meus testes mais ainda não fiz um completo
+					//Então é um dar uma checada.}
 					case 1://Funcionario especifico
-						printf("Insira o primeiro nome do funcionario.");
-						fflush(stdin);
+						printf("Insira o CPF do funcionario: ");
 						scanf("%d",&escolha);
 						for ( i = 0; i < qtdFuncionario; i++){
 							if(escolha == *funcionarios[i].cpf){
@@ -175,7 +176,7 @@
 								printf("Salario: %s\n",funcionarios[i].salario);
 							}
 						}
-					case 2:
+					case 2://Todos os funcionarios
 						for(i = 0; i < qtdFuncionario; i++){
 							printf("---------Funcionario---------\n");
 							printf("Nome: %s\n",funcionarios[i].nome);
@@ -187,6 +188,8 @@
 							printf("Salario: %s\n",funcionarios[i].salario);
 						}
 				}
+				break;
+			case 4:
 
 				break;
 
