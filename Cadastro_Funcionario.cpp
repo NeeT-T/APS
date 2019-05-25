@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
-
-	struct inclusionFuncionario{
+	//Struct para criar um funcionario
+	typedef struct novoFuncionario{
 		char nome[100];
 		int idade;
 		int cpf[11];
@@ -11,14 +11,14 @@
 		char endereco[100];
 		double salario;
 
-	};
+	}novoFuncionario;
 	
 	int main (){
 		setlocale(LC_ALL,"portuguese");
 		int escolha, qtdFuncionario=1;
-		struct inclusionFuncionario *funcionarios;
+		novoFuncionario *funcionarios;
 		
-		funcionarios = (inclusionFuncionario *) malloc (qtdFuncionario*sizeof(inclusionFuncionario));
+		funcionarios = malloc (qtdFuncionario* sizeof(novoFuncionario));
 		
 		printf("Adicionar Funcionario              [1]\n");
 		printf("Alterar de dados de um funcionario [2]\n");
@@ -50,9 +50,9 @@
 				printf("Informe o quanto esse funcionario recebe: ");
 				scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
 				qtdFuncionario++;
-				funcionarios = (inclusionFuncionario *)realloc( funcionarios, qtdFuncionario * sizeof(inclusionFuncionario));		
+				funcionarios =  realloc  ( funcionarios, qtdFuncionario * sizeof(novoFuncionario));		
 			break;
-			case 2:
+			
 				
 		}
 	}
