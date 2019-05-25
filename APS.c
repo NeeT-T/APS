@@ -1,3 +1,5 @@
+//Salvem essa porra em arquivo C não CPP Agente está estudando programação estrutura em "C" Não Programação orientada a objeto em "Cpp"
+//Fica o aviso  ↑
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
@@ -18,12 +20,11 @@
 		setlocale(LC_ALL,"portuguese");
 		int escolha, i, qtdFuncionario=1;
 		novoFuncionario *funcionarios = NULL;
-
 		//Alocação de memoria dinamica "malloc" para iniciar um array
 		funcionarios = malloc (qtdFuncionario* sizeof(novoFuncionario));
 		printf("Adicionar Funcionario              [1]\n");
 		printf("Alterar dados de um funcionario    [2]\n");
-		printf("Consulta[3]\n");
+		printf("Consultar dados de um funcionario  [3]\n");
 		printf("Exclusão[4]\n");
 		printf("Listagem[5]\n");
 		printf("-----------------------------------------\n");
@@ -64,7 +65,7 @@
 					// 	printf("Você precisa adicionar um funcionario primeiro");
 					// 	break;
 					// }
-					if(escolha == *funcionarios[i].cpf){
+					if(escolha == *funcionarios[i].cpf){//Checar se o CPF é igual para alterar os dados do dono do CPF
 						printf("Qual informação você deseja alterar: ");
 						printf("[1] Nome\n");
 						printf("[2] Idade\n");
@@ -77,46 +78,46 @@
 						printf("Escolha: ");
 						scanf("%d",&escolha);
 						system("cls");
-						switch (escolha){
-						case 1:
+						switch (escolha){//Switch para alterar os dados do funcionario
+						case 1://Nome
 							// printf("Nome salvo: %s",funcionarios[i].nome);
 							printf("Nome: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].nome);
 							fflush(stdin);
 							break;
-						case 2:
+						case 2://Idade
 							// printf("Idade salva: %d",funcionarios[i].idade);
 							printf("Idade: ");
 							scanf("%d",&funcionarios[i].idade);
 							break;
-						case 3:
+						case 3://Cargo
 							// printf("Cargo salvo: %s",funcionarios[i].cargo);
 							printf("Cargo: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].cargo);
 							fflush(stdin);
 							break;
-						case 4:
+						case 4://Cidade
 							// printf("Cidade salva: %s",funcionarios[i].cidade);
 							printf("Cidade: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].cidade);
 							fflush(stdin);
 							break;
-						case 5:
+						case 5://Endereço
 							// printf("Endereço salvo: %s",funcionarios[i].endereco);
 							printf("Endereço: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].endereco);
 							fflush(stdin);
 							break;
-						case 6:
+						case 6://Salario
 							// printf("Salario salvo: %lf",funcionarios[i].salario);
 							printf("Salario: ");
 							scanf("%d",&funcionarios[i].salario);
 							break;
-						case 7:
+						case 7://Tudo menos o CPF
 							// printf("Nome salvo: %s",funcionarios[i].nome);
 							// printf("Idade salva: %d",funcionarios[i].idade);
 							// printf("Cargo salvo: %s",funcionarios[i].cargo);
@@ -143,8 +144,16 @@
 							fflush(stdin);
 							printf("Informe o quanto esse funcionario recebe: ");
 							scanf("%lf", &funcionarios[i].salario);
+							break;
+						default:
+							printf("Escolha invalida.");
+							break;
 						}
+						
 					}
 				}
+				break;
+			case 3:
+				
 		}
 	}
