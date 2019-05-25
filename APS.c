@@ -38,7 +38,7 @@
 				scanf("%s", &funcionarios[(qtdFuncionario-1)].nome);
 				printf("Insira a idade desse funcionario: ");
 				scanf("%d",&funcionarios[qtdFuncionario - 1].idade);
-				printf("Digite o CPF do funcionario: ");
+				printf("Digite o CPF do funcionario (Tenha certeza de digitalo corretamente porq não poderá muda-lo): ");
 				scanf("%d", &funcionarios[qtdFuncionario - 1].cpf);
 				printf("Isira o cargo do funcionario: ");
 				fflush(stdin);
@@ -79,63 +79,70 @@
 						system("cls");
 						switch (escolha){
 						case 1:
-							printf("Nome salvo: %s",funcionarios[i].nome);
+							// printf("Nome salvo: %s",funcionarios[i].nome);
 							printf("Nome: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].nome);
 							fflush(stdin);
 							break;
 						case 2:
-							printf("Idade salva: %d",funcionarios[i].idade);
+							// printf("Idade salva: %d",funcionarios[i].idade);
 							printf("Idade: ");
 							scanf("%d",&funcionarios[i].idade);
 							break;
 						case 3:
-							printf("Cargo salvo: %s",funcionarios[i].cargo);
+							// printf("Cargo salvo: %s",funcionarios[i].cargo);
 							printf("Cargo: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].cargo);
 							fflush(stdin);
 							break;
 						case 4:
-							printf("Cidade salva: %s",funcionarios[i].cidade);
+							// printf("Cidade salva: %s",funcionarios[i].cidade);
 							printf("Cidade: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].cidade);
 							fflush(stdin);
 							break;
 						case 5:
-							printf("Endereço salvo: %s",funcionarios[i].endereco);
+							// printf("Endereço salvo: %s",funcionarios[i].endereco);
 							printf("Endereço: ");
 							fflush(stdin);
 							scanf("%s",&funcionarios[i].endereco);
 							fflush(stdin);
 							break;
 						case 6:
-							printf("Salario salvo: %lf",funcionarios[i].salario);
+							// printf("Salario salvo: %lf",funcionarios[i].salario);
 							printf("Salario: ");
 							scanf("%d",&funcionarios[i].salario);
 							break;
 						case 7:
+							// printf("Nome salvo: %s",funcionarios[i].nome);
+							// printf("Idade salva: %d",funcionarios[i].idade);
+							// printf("Cargo salvo: %s",funcionarios[i].cargo);
+							// printf("Cidade salva: %s",funcionarios[i].cidade);
+							// printf("Endereço salvo: %s",funcionarios[i].endereco);
+							// printf("Salario salvo: %lf",funcionarios[i].salario);
+
 							printf("Digite o nome do funcionario: ");
 							fflush(stdin);
-							scanf("%s", &funcionarios[(qtdFuncionario-1)].nome);
+							scanf("%s", &funcionarios[i].nome);
 							printf("Insira a idade desse funcionario: ");
-							scanf("%d",&funcionarios[qtdFuncionario - 1].idade);
-							printf("Digite o CPF do funcionario: ");
-							scanf("%d", &funcionarios[qtdFuncionario - 1].cpf);
+							scanf("%d",&funcionarios[i].idade);
+							// printf("Digite o CPF do funcionario: ");
+							// scanf("%d", &funcionarios[i].cpf);
 							printf("Isira o cargo do funcionario: ");
 							fflush(stdin);
-							scanf("%s",&funcionarios[qtdFuncionario - 1].cargo);
+							scanf("%s",&funcionarios[i].cargo);
 							printf("Informe a cidade do funcionario: ");
 							fflush(stdin);
-							scanf("%s", &funcionarios[qtdFuncionario - 1].cidade);
+							scanf("%s", &funcionarios[i].cidade);
 							printf("Escreva o endereço do funcionario: ");
 							fflush(stdin);
-							scanf("%s", &funcionarios[qtdFuncionario - 1].endereco);
+							scanf("%s", &funcionarios[i].endereco);
 							fflush(stdin);
 							printf("Informe o quanto esse funcionario recebe: ");
-							scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
+							scanf("%lf", &funcionarios[i].salario);
 						}
 					}
 				}
