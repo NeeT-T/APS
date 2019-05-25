@@ -21,10 +21,10 @@
 		int escolha, i, qtdFuncionario=1;
 		novoFuncionario *funcionarios = NULL;
 		//Alocação de memoria dinamica "malloc" para iniciar um array
-		funcionarios = malloc (qtdFuncionario* sizeof(novoFuncionario));
-		printf("Adicionar Funcionario              [1]\n");
-		printf("Alterar dados de um funcionario    [2]\n");
-		printf("Consultar dados de um funcionario  [3]\n");
+		funcionarios = (novoFuncionario*)malloc (qtdFuncionario* sizeof(novoFuncionario));
+		printf("[1] Adicionar Funcionario              \n");
+		printf("[2] Alterar dados de um funcionario    \n");
+		printf("[3] Consultar dados de um funcionario  \n");
 		printf("Exclusão[4]\n");
 		printf("Listagem[5]\n");
 		printf("-----------------------------------------\n");
@@ -55,7 +55,7 @@
 				scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
 				qtdFuncionario++;
 				//Realocação do tamanho do array por meio do "realloc"
-				funcionarios =  realloc  ( funcionarios, qtdFuncionario * sizeof(novoFuncionario));		
+				funcionarios = (novoFuncionario*) realloc  ( funcionarios, qtdFuncionario * sizeof(novoFuncionario));		
 			break;
 			case 2://Alterar dados do funcionario
 				printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
@@ -149,11 +149,26 @@
 							printf("Escolha invalida.");
 							break;
 						}
-						
 					}
 				}
 				break;
 			case 3:
-				
+				printf("[1] Funcionario especifico\n");
+				printf("[2] Todos os funcionario\n");
+				printf("-----------------------------------------\n");
+				printf("Escolha: ");
+				scanf("%d",&escolha);
+				switch (escolha){
+				case 1:
+					printf("Insira o CPF do funcionario.");
+					scanf("%d",&escolha);
+					for ( i = 0; i < qtdFuncionario; i++)
+					{
+						if(escolha == *funcionarios[i].cpf);
+						
+					}
+					break;
+				}
+
 		}
 	}
