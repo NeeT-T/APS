@@ -197,6 +197,8 @@
 					break;
 			}
 			printf("Quer continuar usando o código? ");
+			fflush(stdin);
 			scanf("%c",&resp);
+			fflush(stdin);
 		} while(resp == 's');
 	}
