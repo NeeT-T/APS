@@ -8,8 +8,8 @@
 	typedef struct novoFuncionario{
 		char nome[100];
 		int idade;
-		int cpf[11];
-		char cargo[25];
+		char cpf[12];
+		char cargo[25]; 
 		char cidade[20];
 		char endereco[100];
 		double salario;
@@ -17,8 +17,8 @@
 	//Inicio
 	int main (){
 		setlocale(LC_ALL,"portuguese");
-		int escolha, i, qtdFuncionario=1;
-		char resp;
+		int i, qtdFuncionario=1, busca, retorno;
+		char resp, escolha[11];
 		//Tentativa de iniciar o codigo Null
 		novoFuncionario *funcionarios = NULL;
 		//Alocação de memoria dinamica "malloc" para iniciar um array
@@ -31,43 +31,55 @@
 			printf("[5] Listagem\n");
 			printf("-----------------------------------------\n");
 			printf("Escolha: ");
-			scanf("%d", &escolha);
+			scanf("%d", &busca);
 			//Switch de dados
 			system("cls");
-			switch (escolha){
+			
+			switch (busca){
 				case 1://Adicionar um novo funcionario
 					printf("Digite o nome completo do funcionario: ");
 					fflush(stdin);
-					scanf("%s", &funcionarios[qtdFuncionario-1].nome);
+					gets(funcionarios[qtdFuncionario-1].nome);
 					printf("Insira a idade desse funcionario: ");
 					scanf("%d",&funcionarios[qtdFuncionario - 1].idade);
 					printf("Digite o CPF do funcionario (Tenha certeza de digitalo corretamente porq não poderá muda-lo): ");
-					scanf("%d", &funcionarios[qtdFuncionario - 1].cpf);
-					printf("Isira o cargo do funcionario: ");
 					fflush(stdin);
-					scanf("%s",&funcionarios[qtdFuncionario - 1].cargo);
+					gets(funcionarios[qtdFuncionario - 1].cpf);
+					printf("Insira o cargo do funcionario: ");
+					fflush(stdin);
+					gets(funcionarios[qtdFuncionario - 1].cargo);
 					printf("Informe a cidade do funcionario: ");
 					fflush(stdin);
-					scanf("%s", &funcionarios[qtdFuncionario - 1].cidade);
+					gets(funcionarios[qtdFuncionario - 1].cidade);
 					printf("Escreva o endereço do funcionario: ");
 					fflush(stdin);
-					scanf("%s", &funcionarios[qtdFuncionario - 1].endereco);
+					gets(funcionarios[qtdFuncionario - 1].endereco);
 					fflush(stdin);
 					printf("Informe o quanto esse funcionario recebe: ");
 					scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
+					printf("--------");
+					for ( i = 0; i < qtdFuncionario; i++){
+						printf("---------Funcionario---------\n");
+						printf("Nome: %s\n",funcionarios[i].nome);
+						printf("Idade: %d\n",funcionarios[i].idade);
+						printf("CPF: %s\n",funcionarios[i].cpf);
+						printf("Cargo: %s\n",funcionarios[i].cargo);
+						printf("Cidade: %s\n",funcionarios[i].cidade);
+						printf("Endereço: %s\n",funcionarios[i].endereco);
+						printf("Salario: %0.2f\n",funcionarios[i].salario);
+					}
 					qtdFuncionario++;
 					//Realocação do tamanho do array por meio do "realloc"
 					funcionarios = (novoFuncionario*) realloc (funcionarios, qtdFuncionario * sizeof(novoFuncionario));
 					break;
 				case 2://Alterar dados do funcionario
 					printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
-					scanf("%d",&escolha);
-					for(i = 0; i < qtdFuncionario; i++){
-						// if(funcionarios == NULL){
-						// 	printf("Você precisa adicionar um funcionario primeiro");
-						// 	break;
-						// }
-						if(escolha == *funcionarios[i].cpf){//Checar se o CPF é igual para alterar os dados do dono do CPF
+					gets(escolha);
+					for(i = 0; i < qtdFuncionario; i++){	
+						retorno = strncmp(escolha, funcionarios[i].cpf, 11);
+						printf("%d \n", retorno);
+						if(retorno == -1){
+					//	if(escolha == funcionarios[i].cpf){//Checar se o CPF é igual para alterar os dados do dono do CPF
 							printf("Qual informação você deseja alterar: ");
 							printf("[1] Nome\n");
 							printf("[2] Idade\n");
@@ -78,41 +90,33 @@
 							printf("[7] Tudo\n");
 							printf("-----------------------------------------\n");
 							printf("Escolha: ");
-							scanf("%d",&escolha);
+							scanf("%d",&busca);
 							system("cls");
-							switch (escolha){//Switch para alterar os dados do funcionario
+							switch (busca){//Switch para alterar os dados do funcionario
 								case 1://Nome
 									// printf("Nome salvo: %s",funcionarios[i].nome);
 									printf("Nome completo: ");
-									fflush(stdin);
-									scanf("%s",&funcionarios[i].nome);
-									fflush(stdin);
+									gets(funcionarios[i].nome);
 									break;
 								case 2://Idade
 									// printf("Idade salva: %d",funcionarios[i].idade);
 									printf("Idade: ");
-									scanf("%d",&funcionarios[i].idade);
+									scanf("%d", &funcionarios[i].idade);
 									break;
 								case 3://Cargo
 									// printf("Cargo salvo: %s",funcionarios[i].cargo);
 									printf("Cargo: ");
-									fflush(stdin);
-									scanf("%s",&funcionarios[i].cargo);
-									fflush(stdin);
+									gets(funcionarios[i].cargo);
 									break;
 								case 4://Cidade
 									// printf("Cidade salva: %s",funcionarios[i].cidade);
 									printf("Cidade: ");
-									fflush(stdin);
-									scanf("%s",&funcionarios[i].cidade);
-									fflush(stdin);
+									gets(funcionarios[i].cidade);
 									break;
 								case 5://Endereço
 									// printf("Endereço salvo: %s",funcionarios[i].endereco);
 									printf("Endereço: ");
-									fflush(stdin);
-									scanf("%s",&funcionarios[i].endereco);
-									fflush(stdin);
+									gets(funcionarios[i].endereco);
 									break;
 								case 6://Salario
 									// printf("Salario salvo: %lf",funcionarios[i].salario);
@@ -128,21 +132,20 @@
 									// printf("Salario salvo: %lf",funcionarios[i].salario);
 
 									printf("Digite o nome do funcionario: ");
-									fflush(stdin);
-									scanf("%s", &funcionarios[i].nome);
+									gets(funcionarios[i].nome);
 									printf("Insira a idade desse funcionario: ");
 									scanf("%d",&funcionarios[i].idade);
 									// printf("Digite o CPF do funcionario: ");
 									// scanf("%d", &funcionarios[i].cpf);
 									printf("Isira o cargo do funcionario: ");
 									fflush(stdin);
-									scanf("%s",&funcionarios[i].cargo);
+									gets(funcionarios[i].cargo);
 									printf("Informe a cidade do funcionario: ");
 									fflush(stdin);
-									scanf("%s", &funcionarios[i].cidade);
+									gets(funcionarios[i].cidade);
 									printf("Escreva o endereço do funcionario: ");
 									fflush(stdin);
-									scanf("%s", &funcionarios[i].endereco);
+									gets(funcionarios[i].endereco);
 									fflush(stdin);
 									printf("Informe o quanto esse funcionario recebe: ");
 									scanf("%lf", &funcionarios[i].salario);
@@ -159,8 +162,8 @@
 					printf("[2] Todos os funcionario\n");
 					printf("-----------------------------------------\n");
 					printf("Escolha: ");
-					scanf("%d",&escolha);
-					switch (escolha){
+					scanf("%d",&busca);
+					switch (busca){
 						//{Deem um jeito nesse Case 1 porq ele tá bugado mesmo não estando igual ele coloca
 						//Um valor aleatorio isso aconteceu nos meus testes mais ainda não fiz um completo
 						//Então é um dar uma checada.}
@@ -168,11 +171,11 @@
 							printf("Insira o CPF do funcionario: ");
 							scanf("%d",&escolha);
 							for ( i = 0; i < qtdFuncionario; i++){
-								if(escolha == *funcionarios[i].cpf){
+								if(escolha == funcionarios[i].cpf){
 									printf("---------Funcionario---------\n");
 									printf("Nome: %s\n",funcionarios[i].nome);
 									printf("Idade: %d\n",funcionarios[i].idade);
-									printf("CPF: %d\n",funcionarios[i].cpf);
+									printf("CPF: %s\n",funcionarios[i].cpf);
 									printf("Cargo: %s\n",funcionarios[i].cargo);
 									printf("Cidade: %s\n",funcionarios[i].cidade);
 									printf("Endereço: %s\n",funcionarios[i].endereco);
@@ -184,7 +187,7 @@
 								printf("---------Funcionario---------\n");
 								printf("Nome: %s\n",funcionarios[i].nome);
 								printf("Idade: %d\n",funcionarios[i].idade);
-								printf("CPF: %d\n",funcionarios[i].cpf);
+								printf("CPF: %s\n",funcionarios[i].cpf);
 								printf("Cargo: %s\n",funcionarios[i].cargo);
 								printf("Cidade: %s\n",funcionarios[i].cidade);
 								printf("Endereço: %s\n",funcionarios[i].endereco);
@@ -196,7 +199,7 @@
 					
 					break;
 			}
-			printf("Quer continuar usando o código? ");
+			printf("Deseja retornar ao menu principal? s/n \n ");
 			fflush(stdin);
 			scanf("%c",&resp);
 			fflush(stdin);
