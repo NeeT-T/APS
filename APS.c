@@ -158,13 +158,14 @@
 						else
 							printf("CPF não encontrado. ");
 					}
-					
 					break;
 				case 3://Consultar dados de um funcionario
 					printf("Insira o CPF do funcionario: ");
 					scanf("%s",&escolha);
-					for ( i = 0; i < qtdFuncionario; i++){
-						if(strncmp(escolha, funcionarios[i].cpf, 12)){
+					retorno = strncmp(escolha, funcionarios[i].cpf, 12);
+					for( i = 0; i < qtdFuncionario; i++){
+						retorno = strncmp(escolha, funcionarios[i].cpf, 12);
+						if(retorno == 0){
 							printf("---------Funcionario---------\n");
 							printf("Nome: %s\n",funcionarios[i].nome);
 							printf("Idade: %d\n",funcionarios[i].idade);
@@ -211,4 +212,5 @@
 //				return -1;
 //		}
 //	}
+	
 	
