@@ -4,20 +4,18 @@
 #include<stdlib.h>
 #include<locale.h>
 #include<string.h>
-
-	typedef struct novoFuncionario{
-		char nome[100];
-		int idade;
-		char cpf[12];
-		char cargo[25];
-		char cidade[20];
-		char endereco[100];
-		double salario;
-	}novoFuncionario;
-
-
-
 	//Struct para criar um funcionario
+	typedef struct novoFuncionario{
+			char nome[100];
+			int idade;
+			char cpf[12];
+			char cargo[25];
+			char cidade[20];
+			char endereco[100];
+			double salario;
+		}novoFuncionario;
+
+	
 
 	//Inicio
 	int main (){
@@ -61,16 +59,16 @@
 					gets(funcionarios[qtdFuncionario - 1].endereco);
 					fflush(stdin);
 					printf("Informe o quanto esse funcionario recebe: ");
-					scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);
+					scanf("%lf", &funcionarios[qtdFuncionario - 1].salario);					
 					qtdFuncionario++;
 					//Realocação do tamanho do array por meio do "realloc"
-					funcionarios = (novoFuncionario*) realloc (funcionarios, qtdFuncionario * sizeof(novoFuncionario));
+					funcionarios = (novoFuncionario*) realloc (funcionarios, qtdFuncionario * sizeof(novoFuncionario));					
 					break;
 				case 2://Alterar dados do funcionario
 					printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
 					fflush(stdin);
 					gets(escolha);
-					for(i = 0; i < qtdFuncionario; i++){	
+					for(i = 0; i < qtdFuncionario; i++){
 						retorno = strncmp(escolha, funcionarios[i].cpf, 12);
 						if(retorno == 0){
 					//	if(escolha == funcionarios[i].cpf){//Checar se o CPF é igual para alterar os dados do dono do CPF
@@ -155,8 +153,8 @@
 									break;
 							}
 						}
-						else
-							printf("CPF não encontrado. ");
+//						else
+//							printf("CPF não encontrado. ");
 					}
 					break;
 				case 3://Consultar dados de um funcionario
@@ -178,28 +176,44 @@
 					}
 					break;
 				case 4://Excluir dados de um funcionario
+					printf("Insira o CPF do funcionario: ");
+					scanf("%s",&escolha);
 					
+					for( i = 0; i < qtdFuncionario; i++){						
+						retorno = strncmp(escolha, funcionarios[i].cpf, 12);
+						if(retorno == 0){
+							*funcionarios[i].nome=0;
+							funcionarios[i].idade=0;
+							*funcionarios[i].cpf= 0;
+							*funcionarios[i].cargo=0;
+							*funcionarios[i].cidade=0;
+							*funcionarios[i].endereco=0;
+							funcionarios[i].salario=0;
+							break;
+						}
+					}
 					break;
 				case 5://Todos os funcionarios
 					for(i = 0; i < qtdFuncionario; i++){
-						printf("---------Funcionario---------\n");
-						printf("Nome: %s\n",funcionarios[i].nome);
-						printf("Idade: %d\n",funcionarios[i].idade);
-						printf("CPF: %s\n",funcionarios[i].cpf);
-						printf("Cargo: %s\n",funcionarios[i].cargo);
-						printf("Cidade: %s\n",funcionarios[i].cidade);
-						printf("Endereço: %s\n",funcionarios[i].endereco);
-						printf("Salario: %.2lf\n",funcionarios[i].salario);
+						if(funcionarios[i].idade != 0){
+							printf("---------Funcionario---------\n");
+							printf("Nome: %s\n",funcionarios[i].nome);
+							printf("Idade: %d\n",funcionarios[i].idade);
+							printf("CPF: %s\n",funcionarios[i].cpf);
+							printf("Cargo: %s\n",funcionarios[i].cargo);
+							printf("Cidade: %s\n",funcionarios[i].cidade);
+							printf("Endereço: %s\n",funcionarios[i].endereco);
+							printf("Salario: %.2lf\n",funcionarios[i].salario);
+						}
 					}
 					break;
 			}
-			printf("Deseja retornar ao menu principal? s/n \n ");
+			printf("Deseja retornar ao menu principal? [s|n] \n ");
 			fflush(stdin);
 			scanf("%c",&resp);
 			fflush(stdin);
-		} while((resp == 's')||(resp == 'S')||(resp == 'Sim')||(resp == 'sim'));
+		} while(resp == 's');
 	}
-
 
 //	int	compara (char escolha, int qtdFuncionario, novoFuncionario *funcionario){
 //		int i, retorno;
