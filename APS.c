@@ -67,6 +67,7 @@
 							//Realocação do tamanho do array por meio do "realloc"
 							funcionarios = (novoFuncionario*) realloc (funcionarios, qtdFuncionario * sizeof(novoFuncionario));					
 							break;
+							system("cls");
 						case 2://Alterar dados do funcionario
 							printf("Insira o CPF do funcionario que você deseja alterar as informações: ");
 							fflush(stdin);
@@ -159,6 +160,7 @@
 		//						else
 		//							printf("CPF não encontrado. ");
 							}
+							system("cls");
 							break;
 						case 3://Consultar dados de um funcionario
 							printf("Insira o CPF do funcionario: ");
@@ -195,6 +197,7 @@
 									break;
 								}
 							}
+							printf("Os dados do funcionario foram apagados. ");
 							break;
 						case 5://Todos os funcionarios
 							for(i = 0; i < qtdFuncionario; i++){
@@ -211,10 +214,12 @@
 							}
 							break;
 					}
-				printf("Deseja retornar ao menu principal? [s|n] \n ");
+				printf("\n---------------------------------------------\n");
+				printf("Deseja retornar ao menu principal? [s|n]: ");
 				fflush(stdin);
 				scanf("%c",&resp);
-				fflush(stdin);	
+				fflush(stdin);
+				system("cls");
 			}while((resp == 's') && (qtdFuncionario != 11));
 		}while(resp == 's');
 	}
