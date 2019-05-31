@@ -14,6 +14,9 @@
 			char endereco[100];
 			double salario;
 		}novoFuncionario;
+		
+	void imprimir (int i, novoFuncionario *funcionarios);
+	
 	//Inicio
 	int main (){
 		setlocale(LC_ALL,"portuguese");
@@ -70,9 +73,10 @@
 						fflush(stdin);
 						gets(escolha);
 						for(i = 0; i < qtdFuncionario; i++){
-							retorno = strncmp(escolha, funcionarios[i].cpf, 12);
+							retorno = strncmp(escolha, funcionarios[i].cpf, 12);//Checar se o CPF é igual para alterar os dados do dono do CPF
 							if(retorno == 0){
-						//	if(escolha == funcionarios[i].cpf){//Checar se o CPF é igual para alterar os dados do dono do CPF
+								imprimir(i, funcionarios);
+								printf("-----------------------------------------\n"); 
 								printf("Qual informação você deseja alterar: \n");
 								printf("[1] Nome\n");
 								printf("[2] Idade\n");
@@ -88,47 +92,41 @@
 								system("cls");
 								switch (busca){//Switch para alterar os dados do funcionario
 									case 1://Nome
-										printf("Nome salvo: %s",funcionarios[i].nome);
+										printf("Nome salvo: %s\n",funcionarios[i].nome);
 										printf("Nome completo: ");
 										fflush(stdin);
 										gets(funcionarios[i].nome);
 										break;
 									case 2://Idade
-										printf("Idade salva: %d",funcionarios[i].idade);
+										printf("Idade salva: %d\n",funcionarios[i].idade);
 										printf("Idade: ");
 										scanf("%d", &funcionarios[i].idade);
 										break;
 									case 3://Cargo
-										printf("Cargo salvo: %s",funcionarios[i].cargo);
+										printf("Cargo salvo: %s\n",funcionarios[i].cargo);
 										printf("Cargo: ");
 										fflush(stdin);
 										gets(funcionarios[i].cargo);
 										break;
 									case 4://Cidade
-										// printf("Cidade salva: %s",funcionarios[i].cidade);
+										printf("Cidade salva: %s\n",funcionarios[i].cidade);
 										printf("Cidade: ");
 										fflush(stdin);
 										gets(funcionarios[i].cidade);
 										break;
 									case 5://Endereço
-										// printf("Endereço salvo: %s",funcionarios[i].endereco);
+										printf("Endereço salvo: %s\n",funcionarios[i].endereco);
 										printf("Endereço: ");
 										fflush(stdin);
 										gets(funcionarios[i].endereco);
 										break;
 									case 6://Salario
-										// printf("Salario salvo: %lf",funcionarios[i].salario);
+										printf("Salario salvo: %.2lf\n",funcionarios[i].salario);
 										printf("Salario: ");
 										scanf("%d",&funcionarios[i].salario);
 										break;
 										
 									case 7://Tudo menos o CPF
-										// printf("Nome salvo: %s",funcionarios[i].nome);
-										// printf("Idade salva: %d",funcionarios[i].idade);
-										// printf("Cargo salvo: %s",funcionarios[i].cargo);
-										// printf("Cidade salva: %s",funcionarios[i].cidade);
-										// printf("Endereço salvo: %s",funcionarios[i].endereco);
-										// printf("Salario salvo: %lf",funcionarios[i].salario);
 										printf("Digite o nome do funcionario: ");
 										fflush(stdin);
 										gets(funcionarios[i].nome);
@@ -148,9 +146,7 @@
 										fflush(stdin);
 										printf("Informe o quanto esse funcionario recebe: ");
 										scanf("%lf", &funcionarios[i].salario);
-										break;
-									default:
-										printf("Escolha invalida.");
+										
 										break;
 								}
 							}
@@ -166,14 +162,7 @@
 						for( i = 0; i < qtdFuncionario; i++){
 							retorno = strncmp(escolha, funcionarios[i].cpf, 12);
 							if(retorno == 0){
-								printf("---------Funcionario---------\n");
-								printf("Nome: %s\n",funcionarios[i].nome);
-								printf("Idade: %d\n",funcionarios[i].idade);
-								printf("CPF: %s\n",funcionarios[i].cpf);
-								printf("Cargo: %s\n",funcionarios[i].cargo);
-								printf("Cidade: %s\n",funcionarios[i].cidade);
-								printf("Endereço: %s\n",funcionarios[i].endereco);
-								printf("Salario: %.2lf\n",funcionarios[i].salario);
+								imprimir(i, funcionarios);
 							}
 						}
 						break;
@@ -199,14 +188,7 @@
 					case 5://Todos os funcionarios
 						for(i = 0; i < qtdFuncionario; i++){
 							if(funcionarios[i].idade != 0){
-								printf("---------Funcionario---------\n");
-								printf("Nome: %s\n",funcionarios[i].nome);
-								printf("Idade: %d\n",funcionarios[i].idade);
-								printf("CPF: %s\n",funcionarios[i].cpf);
-								printf("Cargo: %s\n",funcionarios[i].cargo);
-								printf("Cidade: %s\n",funcionarios[i].cidade);
-								printf("Endereço: %s\n",funcionarios[i].endereco);
-								printf("Salario: %.2lf\n",funcionarios[i].salario);
+								imprimir(i, funcionarios);
 							}
 						}
 						break;
@@ -221,15 +203,13 @@
 		}while(resp == 's');
 	}
 
-//	int	compara (char escolha, int qtdFuncionario, novoFuncionario *funcionario){
-//		int i, retorno;
-//		for(i = 0; i < qtdFuncionario; i++){
-//			retorno = strncmp(escolha, *funcionario[i]->cpf, 12);
-//			if(retorno == 0){
-//				return 0;
-//			}
-//			else
-//				return -1;
-//		}
-//	}
-	
+	void imprimir (int i, novoFuncionario *funcionarios){
+		printf("---------Funcionario---------\n");
+		printf("Nome: %s\n",funcionarios[i].nome);
+		printf("Idade: %d\n",funcionarios[i].idade);
+		printf("CPF: %s\n",funcionarios[i].cpf);
+		printf("Cargo: %s\n",funcionarios[i].cargo);
+		printf("Cidade: %s\n",funcionarios[i].cidade);
+		printf("Endereço: %s\n",funcionarios[i].endereco);
+		printf("Salario: %.2lf\n",funcionarios[i].salario);
+	}
