@@ -79,7 +79,7 @@
 							printf("Escolha: ");
 							scanf("%d",&busca);
 							system("cls");
-							switch (busca){//Switch para alterar os dados do funcionario
+							switch (busca){
 								case 1://Nome
 									altNome(i, funcionarios);
 								break;
@@ -127,7 +127,6 @@
 					printf("---------------------------------------------");
 					printf("\nAperte [ENTER] para voltar ao menu");
 					getch();
-					//Sleep(3000);
 					break;
 				case 4://Excluir dados de um funcionario
 					printf("Insira o CPF do funcionario: ");
@@ -160,13 +159,7 @@
 					getch();
 					break;
 			}
-			//printf("\n---------------------------------------------\n");
-			//printf("Deseja retornar ao menu principal? [s|n]: ");
-			//fflush(stdin);
-			//scanf("%c",&resp);
-			//fflush(stdin);
 			system("cls");
-			//}while((resp == 's') && (qtdFuncionario != 11));
 		}while(busca != 0);
 	}
 	
