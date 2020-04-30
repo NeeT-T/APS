@@ -278,6 +278,3 @@
 		printf("Informe o quanto esse funcionario recebe: ");
 		scanf("%lf", &funcionarios[i].salario);
 	}
-
-
-
