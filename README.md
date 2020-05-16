@@ -1,3 +1,1 @@
 # APS
-...
-Atividade pratica surpervisionada feita no segundo semestre da faculdade
